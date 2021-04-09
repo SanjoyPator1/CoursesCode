@@ -1,0 +1,1 @@
+console.log("video 06 global npm nodemon")

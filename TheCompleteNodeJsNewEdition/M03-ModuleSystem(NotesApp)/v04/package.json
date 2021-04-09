@@ -1,0 +1,14 @@
+{
+  "name": "notes-app-v04",
+  "version": "1.0.0",
+  "description": "v04",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sanjoy",
+  "license": "ISC",
+  "dependencies": {
+    "validator": "^13.5.2"
+  }
+}
