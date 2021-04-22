@@ -1,0 +1,58 @@
+*{
+    margin: 4px;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+.btn{
+    color:white;
+    background-color: crimson;
+    padding: 5px;
+    cursor:pointer;
+    border: 2px solid black;
+    border-radius: 16px;
+}
+
+.container{
+    max-width: 80%;
+    padding: 34px;
+    margin: auto;
+}
+
+.container h1, p{
+    text-align: center;
+    font-family: 'Indie Flower', cursive;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.692);
+    padding: 7px;
+    margin: 17px;
+}
+
+input, textarea{
+    border: 2px solid black;
+    border-radius: 6px;
+    display: block;
+    width: 80%;
+    margin: auto;
+    margin: 5px;
+    padding: 5px;
+}
+
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 5px;
+}
+
+.bg{
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    opacity: 90%;
+}
+
+.submitMsg{
+    color: rgb(255, 152, 172);
+}
