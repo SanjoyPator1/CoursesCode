@@ -10,7 +10,25 @@ void main() {
   ));
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  TextEditingController _nameController = TextEditingController();
+
+  var myText = "Change Me";
+
+  @override
+  void initState() {
+    //screen start honese pehle yeh call hota hai
+    //so api wagera yaha call kar sakte hai screen dikhanese pehle
+    // ignore: todo
+    // TODO: implement initState
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,15 +48,16 @@ class HomePage extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  "Change Me",
+                  myText,
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: TextField(
+                    controller: _nameController,
                     keyboardType: TextInputType.text,
-                    obscureText: true,
+                    //obscureText: true,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       hintText: "Enter Something here",
@@ -86,7 +105,11 @@ class HomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          myText = _nameController.text;
+          //to show in screen the changes
+          setState(() {});
+        },
         child: Icon(Icons.refresh),
       ),
     );
