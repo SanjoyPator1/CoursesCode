@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'ChangeNameCard.dart';
 import 'drawer.dart';
+
+import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,6 +15,10 @@ class _HomePageState extends State<HomePage> {
 
   var myText = "Change Me";
 
+  var url = 'https://jsonplaceholder.typicode.com/photos';
+
+  var data;
+
   @override
   void initState() {
     //screen start honese pehle yeh call hota hai
@@ -19,6 +26,14 @@ class _HomePageState extends State<HomePage> {
     // ignore: todo
     // TODO: implement initState
     super.initState();
+    getData();
+  }
+
+  getData() async {
+    var res = await http.get(Uri.parse(url));
+    data = jsonDecode(res.body);
+    print(data);
+    setState(() {});
   }
 
   @override
@@ -28,13 +43,26 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("Awesome App"),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Card(
-            child: ChangeNameCard(myText: myText, nameController: _nameController),
-          ),
-        ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: data != null
+            ? ListView.builder(
+                //GridView.builder(
+                //    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                //        crossAxisCount: 1),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListTile(
+                      title: Text(data[index]["title"]),
+                      subtitle: Text("Id: ${data[index]["id"]}"),
+                      leading: Image.network(data[index]["url"]),
+                    ),
+                  );
+                },
+                itemCount: data.length,
+              )
+            : Center(child: CircularProgressIndicator()),
       ),
       drawer: Mydrawer(),
       floatingActionButton: FloatingActionButton(
