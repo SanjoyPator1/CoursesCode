@@ -1,4 +1,5 @@
 import 'package:awesomeapp/pages/bg_image.dart';
+import 'package:awesomeapp/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -54,12 +55,9 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         ElevatedButton(
                           onPressed: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => HomePage()));
-                            //
-                            Navigator.pushNamed(context, "/home");
+                            Constants.prefs.setBool("LoggedIN", true);
+                            //replacement becoz we dont want to come back to the login page
+                            Navigator.pushReplacementNamed(context, "/home");
                           },
                           child: Text(
                             "Sign In",
