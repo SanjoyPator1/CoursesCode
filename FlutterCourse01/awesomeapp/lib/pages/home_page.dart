@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../ChangeNameCard.dart';
-import '../drawer.dart';
+import 'ChangeNameCard.dart';
+import 'drawer.dart';
 
 class HomePage extends StatefulWidget {
   @override
